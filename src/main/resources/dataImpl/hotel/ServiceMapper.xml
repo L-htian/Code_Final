@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.hotel.data.hotel.ServiceMapper">
+
+    <insert id="addService" parameterType="com.example.hotel.po.Hotel_Service"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into HotelService(hotelId,serviceName)
+        values (#{hotelId},#{serviceName})
+    </insert>
+
+    <delete id="deleteService" parameterType="com.example.hotel.po.Hotel_Service">
+        delete from HotelService where hotelId=#{hotelId}
+    </delete>
+
+    <select id="getServiceByHotelId" resultMap="HotelService">
+        select * from HotelService where hotelId=#{hotelId}
+    </select>
+
+    <resultMap id="HotelService" type="com.example.hotel.po.Hotel_Service">
+        <id column="id" property="id"></id>
+        <result column="serviceName" property="serviceName"></result>
+        <result column="hotelId" property="hotelId"></result>
+    </resultMap>
+
+
+</mapper>
